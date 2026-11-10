@@ -194,7 +194,7 @@ jobs:
           submodules: true
       - name: Build semgrep-core
         run: ./scripts/install-alpine-semgrep-core
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v7
         with:
           name: ocaml-build-artifacts
           path: ocaml-build-artifacts.tgz
@@ -217,7 +217,7 @@ jobs:
       - name: Run OSX release script
         run: ./scripts/osx-release.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: semgrep-osx-${{ github.sha }}
           path: artifacts.zip
@@ -254,7 +254,7 @@ jobs:
           HOMEBREW_NO_INSTALL_CLEANUP: "true"
         run: ./scripts/osx-m1-release.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: semgrep-m1-${{ github.sha }}
           path: artifacts.zip
@@ -280,7 +280,7 @@ jobs:
       - name: Run Ubuntu build script
         run: ./scripts/ubuntu-release.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: semgrep-ubuntu-16.04-${{ github.sha }}
           path: artifacts.tar.gz
@@ -308,7 +308,7 @@ jobs:
           SEMGREP_CORE_BIN: ../artifacts/semgrep-core
         run: ./scripts/build-wheels.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: osx-wheel
           path: cli/dist.zip
@@ -333,7 +333,7 @@ jobs:
           SEMGREP_CORE_BIN: ../artifacts/semgrep-core
         run: ./scripts/build-wheels.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: m1-wheel
           path: cli/dist.zip
@@ -364,7 +364,7 @@ jobs:
           SEMGREP_CORE_BIN: ../ocaml-build-artifacts/bin/semgrep-core
         run: ./scripts/build-wheels.sh
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: manylinux-wheel
           path: cli/dist.zip
