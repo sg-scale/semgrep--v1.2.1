@@ -88,7 +88,7 @@ jobs:
         with:
           persist-credentials: false
       - run: ./scripts/validate-docker-build.sh candidate-image
-      - uses: docker/login-action@v2
+      - uses: docker/login-action@v4
         if: github.actor != 'dependabot[bot]' && (github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/develop')
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
