@@ -48,7 +48,7 @@ jobs:
           echo "::add-mask::$TOKEN"
           echo "::set-output name=token::$TOKEN"
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         id: checkout
         with:
           submodules: "recursive"
@@ -216,7 +216,7 @@ jobs:
           echo "::add-mask::$TOKEN"
           echo "::set-output name=token::$TOKEN"
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         id: checkout
         with:
           submodules: true

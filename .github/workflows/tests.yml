@@ -26,7 +26,7 @@ jobs:
     env:
       HOME: /root
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       # This is needed later for caching, to generate the cache key
@@ -45,7 +45,7 @@ jobs:
         with:
           path: ocaml-build-artifacts.tgz
           key: "${{ runner.os }}-core-binary-${{ hashFiles('semgrep-core/**', '.github/workflows/tests.yml', 'scripts/install-alpine-semgrep-core') }}-${{ steps.submodule-status.outputs.versions-hash }}"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         if: steps.core-cache.outputs.cache-hit != 'true'
         with:
           submodules: recursive
@@ -84,7 +84,7 @@ jobs:
           tags: candidate-image
           cache-from: type=gha,src=/tmp/.buildx-cache
           cache-to: type=gha,dest=/tmp/.buildx-cache,mode=max
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - run: ./scripts/validate-docker-build.sh candidate-image
@@ -154,7 +154,7 @@ jobs:
     env:
       HOME: /root
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           submodules: true
           persist-credentials: false
@@ -213,7 +213,7 @@ jobs:
       matrix:
         python: ["3.7", "3.8", "3.9", "3.10"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Fetch semgrep-cli submodules
@@ -305,7 +305,7 @@ jobs:
       matrix:
         split: [1, 2, 3, 4]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Fetch semgrep-cli submodules
@@ -348,7 +348,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [build-semgrep-core]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Fetch semgrep-cli submodules
@@ -382,7 +382,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [build-semgrep-core]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Fetch semgrep-cli submodules
@@ -434,7 +434,7 @@ jobs:
   build-macos-release:
     runs-on: ["self-hosted", "macOS", "X64"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Fetch semgrep-cli submodules
@@ -475,7 +475,7 @@ jobs:
     container: returntocorp/sgrep-build:ubuntu-16.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Fetch semgrep-cli submodules
