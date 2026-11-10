@@ -114,7 +114,7 @@ jobs:
           echo "::add-mask::$TOKEN"
           echo "::set-output name=token::$TOKEN"
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           submodules: true
           token: ${{ steps.token.outputs.token }}
@@ -148,7 +148,7 @@ jobs:
           cache-to: type=gha,dest=/tmp/.buildx-cache,mode=max
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Check the semgrep Docker image
         run: ./scripts/validate-docker-build.sh candidate-image
@@ -189,7 +189,7 @@ jobs:
     steps:
       - name: Make checkout speedy
         run: git config --global fetch.parallel 50
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           submodules: true
       - name: Build semgrep-core
@@ -207,7 +207,7 @@ jobs:
     steps:
       - name: Make checkout speedy
         run: git config --global fetch.parallel 50
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           submodules: true
       - uses: actions/setup-python@v4
@@ -244,7 +244,7 @@ jobs:
     if: ${{needs.check-m1-build.outputs.m1_support == 'true'}}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           submodules: true
       - name: Run OSX release script
@@ -265,7 +265,7 @@ jobs:
     needs: [build-core]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           submodules: "recursive"
       - name: Download artifacts
@@ -289,7 +289,7 @@ jobs:
     runs-on: macos-12
     needs: [build-core-osx]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           submodules: "recursive"
       - name: Download artifacts
@@ -318,7 +318,7 @@ jobs:
     needs: [build-core-m1]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           submodules: "recursive"
       - name: Download artifacts
@@ -343,7 +343,7 @@ jobs:
     container: returntocorp/sgrep-build:ubuntu-16.04
     needs: [build-core]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           submodules: "recursive"
       - name: Download artifacts
@@ -449,7 +449,7 @@ jobs:
     env:
       SEMGREP_SKIP_BIN: "1"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
