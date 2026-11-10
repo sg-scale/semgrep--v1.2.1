@@ -263,7 +263,7 @@ jobs:
       - name: Commit snapshot updates
         id: snapshot-commit
         if: failure() && github.event_name == 'pull_request' && (github.actor != 'dependabot[bot]' && !(github.event.pull_request.head.repo.full_name != github.repository))
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v11
         with:
           add: cli/tests/e2e/snapshots
           default_author: github_actions
