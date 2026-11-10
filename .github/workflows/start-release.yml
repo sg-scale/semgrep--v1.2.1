@@ -99,7 +99,7 @@ jobs:
           pipenv run towncrier build --draft --version ${{ steps.next-version.outputs.next-version }} > release_body.txt
       - name: Upload Changelog Body Artifact
         id: upload-changelog-artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: release_body_${{ steps.next-version.outputs.next-version }}
           path: scripts/release/release_body.txt
